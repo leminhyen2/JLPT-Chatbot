@@ -9,7 +9,10 @@ Digital Ocean + Ubuntu + SSH + NGINX + PostgreSQL + JavaScript/NodeJs + Chatfuel
 
 - 8088mainFile.js: this file host the chatbot interface code. Like its name implied, it is served on port 8088
 
+- customModules: contain packaged modules that respond to each different requests from the users 
+
 - importantFunctions.js: this file contains mainly functions that fetch data from database and push it to 8088mainFile.js
 
 - messages.js: contains messages in the required format that are used by 8088mainFile to be sent to Chatfuel to process 
 
+- allUserRanking.html: front-end web page that displays the ranking of all users
