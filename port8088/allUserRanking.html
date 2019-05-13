@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+button {
+        background-color: #555555;       
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;        
+}
+</style>
+</head>
+<body>
+
+<h3 id = "result"></h3>
+
+<script>
+//document.getElementById("doctype").addEventListener("click", doctype);
+//document.getElementById('result').innerHTML = html;
+
+(function doctype() {
+    const url = 'https://bot7.1zero.today/alluserinfo'; 
+
+    fetch(url) // Call the API by its URL then process the received data
+    .then(async function(data) {
+        const objects = await data.json()
+
+        //convert items in array into HTML table
+        var html = '<table>';
+        html += '<tr>';
+        for( var j in objects[0] ) {
+         html += '<th>' + j + '</th>';
+        }
+        html += '</tr>';
+        for( var i = 0; i < objects.length; i++) {
+         html += '<tr>';
+         for( var j in objects[i] ) {
+           html += '<td>' + objects[i][j] + '</td>';
+         }
+        }
+        html += '</table>';
+        document.getElementById('result').innerHTML = html;
+        //finish converting
+
+        const stringifiedResult = JSON.stringify(objects, null, 2)
+    })
+    .catch(function(error) {
+        newconsole.log('Looks like there was a problem: \n', error);
+    });
+}) ()
+
+</script>
+
+</body>
+</html>
